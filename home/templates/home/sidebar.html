@@ -1,0 +1,97 @@
+{% block sidebar %}
+<aside class="sidebar">
+
+    <section class="new-posts">
+        <h2 class="sidebar-title">Новые посты</h2>
+
+        <div class="new-posts-list">
+            {% for post in posts %}
+            <article class="new-posts-article">
+                <div class="post-img-column">
+                    <img class="new-posts-image" src="{{ post.img_url }}" alt="Картинка к посту о {{ post.title }}">
+                </div>
+
+                <div class="post-text-column">
+                    <time class="new-posts-datetime" datetime="2019-06-14">{{ post.published_date }}</time>
+                    <h3 class="new-posts-title">
+                        <a class="new-posts-link" href="#0">{{ post.title }}</a>
+                    </h3>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <form class="search">
+            <label class="visually-hidden" for="search">Поиск по блогу</label>
+            <input id="search" type="search" class="search-field" name="search" placeholder="Найти..." required>
+            <button class="search-button"><span class="visually-hidden">Найти</span></button>
+        </form>
+    </section>
+
+    <section class="subscription">
+        <h2 class="sidebar-title">Рассылка</h2>
+
+        <form class="subscription-form">
+            <label class="visually-hidden" for="email">Подписаться</label>
+            <input id="email" type="email" class="subscription-field" name="email" placeholder="Ваш email-адрес"
+                required>
+            <button class="subscription-button">Подписаться</button>
+        </form>
+    </section>
+
+    <section class="tags">
+        <h2 class="sidebar-title">Теги</h2>
+        <ul class="tags-list">
+            <li class="tags-item">
+                <a class="tags-link" href="#0">fashion</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">music</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">lifestyle</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">art</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">interior</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">travel</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">food</a>
+            </li>
+            <li class="tags-item">
+                <a class="tags-link" href="#0">health</a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="categories">
+        <h2 class="sidebar-title">Темы</h2>
+        <ul class="category-list">
+            <li class="category-item">
+                <a class="category-link" href="#0">Красота<sup class="number">12</sup></a>
+            </li>
+            <li class="category-item">
+                <a class="category-link" href="#0">Здоровье<sup class="number">4</sup></a>
+            </li>
+            <li class="category-item">
+                <a class="category-link" href="#0">Образ жизни<sup class="number">145</sup></a>
+            </li>
+            <li class="category-item">
+                <a class="category-link" href="#0">Музыка<sup class="number">28</sup></a>
+            </li>
+            <li class="category-item">
+                <a class="category-link" href="#0">Спорт<sup class="number">62</sup></a>
+            </li>
+            <li class="category-item">
+                <a class="category-link" href="#0">Йога<sup class="number">8</sup></a>
+            </li>
+        </ul>
+    </section>
+
+</aside>
+{% endblock %}

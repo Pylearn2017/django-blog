@@ -410,3 +410,12 @@
     line-height: 40px;
     color: #999999;
   }
+
+
+.article-img {
+  width: 300px;
+}
+
+.new-posts-image {
+  width: 70px;
+}

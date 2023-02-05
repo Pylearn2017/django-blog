@@ -1,0 +1,36 @@
+{% extends 'home/index.html' %}
+{% load static %}
+{% block content %}
+<div class="content-wrap">
+    <main class="main-posts-list">
+        {% for post in posts %}
+        <article class="article">
+            <div class="article-img-column">
+                <img class="article-img"
+                    src="{{ post.img_url }}"
+                    alt="Картинка к посту о {{ post.title }}">
+            </div>
+            <div class="article-text-column">
+                <ul class="tab-list">
+                    <li class="tab-item">
+                        <a class="tab-link" href="#0">Travel</a>
+                    </li>
+                    <li class="tab-item">
+                        <a class="tab-link" href="#0">Health</a>
+                    </li>
+                </ul>
+                <h2 class="article-title">
+                    <a class="article-title-link" href="#0">{{ post.title }}</a>
+                </h2>
+                <time class="article-datetime" datetime="2019-06-10">{{ post.published_date }}</time>
+                <cite class="article-author">{{ post.author }}</cite>
+                <div class="article-content">
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </main>
+    {% include "home/sidebar.html" %}
+</div>
+{% endblock %}

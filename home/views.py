@@ -9,6 +9,6 @@ def home_page(request):
         .order_by('published_date')
     return render(
         request, 
-        'home/test_index.html', 
+        'home/post_list.html', 
         {'posts':posts}
         )
