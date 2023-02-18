@@ -3,8 +3,15 @@ from django.conf import settings
 from django.utils import timezone
 
 # Create your models here.
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.tag_name
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
     title = models.CharField(max_length=200)
     img_url = models.CharField(max_length=200)
     text = models.TextField()

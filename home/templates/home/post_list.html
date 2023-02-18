@@ -12,15 +12,14 @@
             </div>
             <div class="article-text-column">
                 <ul class="tab-list">
+                    {% for tag in post.tags.all %}
                     <li class="tab-item">
-                        <a class="tab-link" href="#0">Travel</a>
+                        <a class="tab-link" href="#0">{{ tag }}</a>
                     </li>
-                    <li class="tab-item">
-                        <a class="tab-link" href="#0">Health</a>
-                    </li>
+                    {% endfor %}
                 </ul>
                 <h2 class="article-title">
-                    <a class="article-title-link" href="#0">{{ post.title }}</a>
+                    <a class="article-title-link" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
                 </h2>
                 <time class="article-datetime" datetime="2019-06-10">{{ post.published_date }}</time>
                 <cite class="article-author">{{ post.author }}</cite>
