@@ -2,7 +2,12 @@
 
 {% block content %}
     <div class="post-container">
-        <h1 class="post-title">{{ post.title }}</h1>
-        <p class="post-text">{{ post.text|linebreaksbr}}</p>
+        <h1 class="post-title">{{ obj.post.title }}</h1>
+        <p class="post-text">{{ obj.post.text|linebreaksbr}}</p>
+        <ul>
+            {% for comment in obj.comments.all %}
+            <li>{{comment}}</li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
