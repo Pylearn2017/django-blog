@@ -31,10 +31,11 @@
     <section class="subscription">
         <h2 class="sidebar-title">Рассылка</h2>
 
-        <form class="subscription-form">
+        <form class="subscription-form" method="POST" action="/promo_email">
             <label class="visually-hidden" for="email">Подписаться</label>
             <input id="email" type="email" class="subscription-field" name="email" placeholder="Ваш email-адрес"
                 required>
+                {% csrf_token %}
             <button class="subscription-button">Подписаться</button>
         </form>
     </section>

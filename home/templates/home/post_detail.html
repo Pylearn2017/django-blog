@@ -4,6 +4,9 @@
     <div class="post-container">
         <h1 class="post-title">{{ obj.post.title }}</h1>
         <p class="post-text">{{ obj.post.text|linebreaksbr}}</p>
+        <a href="{% url 'comment_new' pk=obj.post.pk %}" class="comment-btn">
+            <span>Добавить комментарий</span>
+        </a>
         <ul>
             {% for comment in obj.comments.all %}
             <li>{{comment}}</li>

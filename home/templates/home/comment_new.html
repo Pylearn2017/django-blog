@@ -1,0 +1,11 @@
+{% extends 'home/index.html' %}
+
+{% block content %}
+    <h1>Новый коменатрий</h1>
+    <form method="POST" class="comment-form">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="comment-btn">Отправить</button>
+    </form>
+
+{% endblock %}
