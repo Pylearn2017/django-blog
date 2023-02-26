@@ -5,7 +5,7 @@
         <h2 class="sidebar-title">Новые посты</h2>
 
         <div class="new-posts-list">
-            {% for post in posts %}
+            {% for post in data.posts %}
             <article class="new-posts-article">
                 <div class="post-img-column">
                     <img class="new-posts-image" src="{{ post.img_url }}" alt="Картинка к посту о {{ post.title }}">
@@ -43,30 +43,11 @@
     <section class="tags">
         <h2 class="sidebar-title">Теги</h2>
         <ul class="tags-list">
+            {% for tag in data.tags %}
             <li class="tags-item">
-                <a class="tags-link" href="#0">fashion</a>
+                <a class="tags-link" href="{% url 'tag_detail' pk=tag.pk %}">{{ tag.tag_name }}</a>
             </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">music</a>
-            </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">lifestyle</a>
-            </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">art</a>
-            </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">interior</a>
-            </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">travel</a>
-            </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">food</a>
-            </li>
-            <li class="tags-item">
-                <a class="tags-link" href="#0">health</a>
-            </li>
+            {% endfor %}
         </ul>
     </section>
 

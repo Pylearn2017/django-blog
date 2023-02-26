@@ -1,7 +1,7 @@
 import yagmail
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from .forms import CommentForm, EmailForm
 from django.core.mail import send_mail
 
@@ -19,13 +19,18 @@ def get_promo_email(request):
 
 
 def home_page(request):
+    tags = Tag.objects.all()[:10]
     posts = Post.objects \
         .filter(published_date__lte=timezone.now()) \
         .order_by('published_date')
+    data = {
+        'tags':tags,
+        'posts':posts
+    }
     return render(
         request, 
         'home/post_list.html', 
-        {'posts':posts}
+        {'data': data}
         )
 
 def post_detail(request, pk):
@@ -57,3 +62,29 @@ def comment_new(request, pk):
         'home/comment_new.html', 
          {'form':form}
         )
+
+def tags_page(request): 
+    tags = Tag.objects.all() 
+    return render(
+        request, 
+        'home/tags_list.html', 
+        {'tags': tags}
+        )
+
+def tag_detail(request, pk):
+    tag = get_object_or_404(Tag, pk=pk)
+    tags = Tag.objects.all()[:10]
+    posts = Post.objects \
+        .filter(tags=tag) \
+        .filter(published_date__lte=timezone.now()) \
+        .order_by('published_date')
+    data = {
+        'tags':tags,
+        'posts':posts
+    }
+    return render(
+        request, 
+        'home/post_list.html', 
+        {'data': data}
+        )
+    
