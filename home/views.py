@@ -88,3 +88,9 @@ def tag_detail(request, pk):
         {'data': data}
         )
     
+
+def contacts_page(request):
+    return render(
+        request, 
+        'home/contacts.html', 
+        )
